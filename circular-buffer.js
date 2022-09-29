@@ -17,9 +17,6 @@ class CircularBuffer {
   }
 
   write(value) {
-    if (!value) {
-     console.log(`value is ${value}`)
-    }
     if (this.bufferIsFull === true) {
       throw new BufferFullError()
     }
@@ -45,10 +42,6 @@ class CircularBuffer {
   }
 
   forceWrite(buffer) {
-    if (!buffer) {
-      return
-    }
-
     if (this.bufferIsFull === false) {
       return this.write(buffer)
     }
