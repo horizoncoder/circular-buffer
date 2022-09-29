@@ -22,6 +22,7 @@ class CircularBuffer {
     }
     this.buffer[this.writeIndex] = value
     this.writeIndex = this.nextIndex(this.writeIndex)
+      this.bufferLength(this.buffer)
     if (this.readIndex === this.writeIndex) {
       this.bufferIsFull = true
     }
@@ -59,6 +60,14 @@ class CircularBuffer {
   }
  nextIndex(index) {
     return (index + 1) % this.buffer.length;
+  }
+  bufferLength(buffer){
+      let filledSpaceInBuffer = buffer.filter((el)=>typeof Number(el) === "number")
+      let availableSpaceInBuffer =buffer.length - filledSpaceInBuffer.length
+      console.log(buffer)
+      console.log( ` buffer: ${buffer}
+      buffer length is ${buffer.length}
+      available space  is ${availableSpaceInBuffer}`)
   }
 }
 
